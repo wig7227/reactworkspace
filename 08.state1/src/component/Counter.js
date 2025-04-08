@@ -3,7 +3,7 @@ import { useState } from "react";
 const Counter = () => {
     /*
      Hook : react에서 상태관리를 위한 코드
-            useState 사용
+            useState() 사용
 
      [사용법]
      const [변수명, 업데이트함수] = useState(초기값);
