@@ -13,7 +13,6 @@ import  axios from 'axios';
 function App() {
   const [clothes, setClothes] = useState(pList);
 
-
   let navigate = useNavigate();
 
   return (
@@ -51,17 +50,28 @@ function App() {
                    .then((result) => {
                     console.log(result);
                     console.log(result.data);
-                    <Col>
-                      <img src = {`${process.env.PUBLIC_URL}/img/top${clothes.id}.png`} width="75%"/>
-                      <h4>{clothes.title}</h4>
-                      <p>{clothes.price}</p>
-                    </Col>
+
+                    setClothes([...clothes, ...result.data]);
                     
                    })
                    .catch(() => {
                     console.log('데이터 가져오기 실패');
                    })
-            }}>서버에서 데이터 가져오기</Button>
+            }}>데이터 가져오기</Button>
+
+            <Button variant="outline-primary" onClick={() => {
+              axios.get('https://raw.githubusercontent.com/professorjiwon/data/refs/heads/main/data3.json')
+                   .then((result) => {
+                    console.log(result);
+                    console.log(result.data);
+
+                    setClothes([...clothes, ...result.data]);
+                    
+                   })
+                   .catch(() => {
+                    console.log('데이터 가져오기 실패');
+                   })
+            }}>데이터 가져오기2</Button>
           </>
         }/>
 
@@ -76,13 +86,12 @@ function App() {
 
 function PListCol(props) {
   return (
-    <>
-      <Col>
-        <img src = {`${process.env.PUBLIC_URL}/img/top${props.clothes.id}.png`} width="75%"/>
-        <h4>{props.clothes.title}</h4>
-        <p>{props.clothes.price}</p>
-      </Col>
-    </>
+    <Col md={4}>
+      <img src = {`${process.env.PUBLIC_URL}/img/top${props.clothes.id}.png`} width="75%"/>
+      <h4>{props.clothes.title}</h4>
+      <p>{props.clothes.price}</p>
+    </Col>
+   
   )
 }
 export default App;

@@ -1,0 +1,20 @@
+[
+  {
+    "id" : 7,
+    "title" : "Outer",
+    "content" : "Made in Seoul",
+    "price" : 30000
+  },
+  {
+    "id" : 8,
+    "title" : "Outer2",
+    "content" : "Made in France",
+    "price" : 25000
+  },
+  {
+    "id" : 9,
+    "title" : "Outer3",
+    "content" : "Made in the States",
+    "price" : 40000
+  }
+]
