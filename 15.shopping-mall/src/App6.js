@@ -20,8 +20,10 @@ import  axios from 'axios';
        주로 사용
 */
 
+
 function App() {
   const [clothes, setClothes] = useState(pList);
+
   const[count, setCount] = useState(2);
 
   let navigate = useNavigate();

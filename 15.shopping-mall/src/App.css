@@ -23,4 +23,13 @@
   margin: 50px;
 }
 
+/* 애니메이션 주기 */
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
 

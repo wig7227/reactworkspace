@@ -1,14 +1,15 @@
-import {Button, Table} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-//import { Dispatch } from './../../node_modules/redux/src/types/store';
-import { changeName,ageUpdate } from '../store/Store';
-/*
-    * Redux 변경하기
-      1. store.js에서 변경해주는 함수 만들고
-      2. export
-      3. dispatch()로 감싸서 사용
-*/
+import {Table} from 'react-bootstrap';
+import {useSelector} from 'react-redux';
+
 function Cart() {
+    // redux 사용밥법
+    /*
+    let state = useSelector((state) => state)
+    console.log(state);
+    console.log(state.user);
+    console.log(state.stock);
+    */
+
     // 원하는 것만 가져오기
     let user = useSelector((state) => state.user)
     console.log(user);
@@ -19,17 +20,9 @@ function Cart() {
     let cart = useSelector((state) => state.cart)
     console.log(cart);
 
-    // store.js에 요청을 보내주는 함수
-    let dispatch = useDispatch()
-
 
     return (
         <div>
-            {user.name}의 장바구니
-            {user.age}
-            <Button variant="outline-info" onClick={() => {
-                                    dispatch(ageUpdate())
-                                }}>나이변경</Button>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -60,10 +53,7 @@ function Cart() {
                                 <td>{v.id}</td>
                                 <td>{v.name}</td>
                                 <td>{v.count}</td>
-                                <td><Button variant="outline-primary" onClick={() =>{
-                                    dispatch(changeName())
-                                }}>이름바꾸기</Button></td>
-                                {/* 버튼을 누르면 v.count가 증가하도록 */}
+                                <td>변경</td>
                             </tr>
                         )
                     }

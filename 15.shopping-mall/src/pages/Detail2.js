@@ -4,7 +4,16 @@ import { useParams } from "react-router-dom";
 import { Context1 } from "../App";
 
 function Detail(props) {
-   
+    /*
+    // useContext(받은것)
+    let a = useContext(Context1);
+    console.log(a);
+    console.log(a.stock);
+    */
+    let {stock, clothes} = useContext(Context1);
+    console.log(stock);
+    console.log(clothes);
+
     let {pindex} = useParams();
     
     let id = props.clothes[pindex].id;
@@ -58,6 +67,8 @@ function Detail(props) {
                     <Nav.Link onClick={() => {setTab(2)}} eventKey="link-2">Link</Nav.Link>
                 </Nav.Item>
             </Nav>
+
+            {/* { tab == 0 ? <div>패션은 예술이다</div> : tab == 1 ? <div>퀄리티 높은 재료</div> : <div>내용들</div> }  */}
             <TabContent tab = {tab} />         
         </div>
         
@@ -67,6 +78,12 @@ function Detail(props) {
 function TabContent({tab}) {
     let [fade, setFade] = useState('');
 
+    let {stock} = useContext(Context1);
+    console.log(stock);
+
+
+    // react 18버전부터 automatic batching 기능
+    // state함수가 근처에 있으면 합쳐서 한꺼번에 state를 변경
     useEffect(() => {
         setTimeout(() => {setFade('end')}, 200);
         return () => {
@@ -75,7 +92,7 @@ function TabContent({tab}) {
     },[tab])
     return (
         <div className={fade}>
-            { [<div>hi</div>, <div>hello</div>, <div>내용들</div>][tab]}
+            { [<div>{stock}</div>, <div>{stock[1]}</div>, <div>내용들</div>][tab]}
         </div>
     )
 }

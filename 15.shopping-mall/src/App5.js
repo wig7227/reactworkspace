@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row, Navbar, Nav, Container, Button } from 'react-bootstrap';
 import './App.css';
 import pList from './data/ProductList';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Detail from './pages/Detail';
 import Cart from './pages/Cart';
@@ -19,12 +19,17 @@ import  axios from 'axios';
     2. Redux : 외부 라이브러리
        주로 사용
 */
+ 
+export let Context1 = createContext();
 
 function App() {
   const [clothes, setClothes] = useState(pList);
   const[count, setCount] = useState(2);
 
   let navigate = useNavigate();
+
+  // 재고 변경
+  let [stock, setStock] = useState([5, 10, 7]);
 
   return (
     <div className="App">
@@ -70,7 +75,11 @@ function App() {
           </>
         }/>
 
-       <Route path='/detail/:pindex' element={<Detail clothes={clothes}/>} />
+       <Route path='/detail/:pindex' element={
+         <Context1.Provider value={{stock, clothes}}>
+           <Detail clothes={clothes}/>
+         </Context1.Provider>
+        } />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/about' element={<div>about 페이지입니다</div>} />
         <Route path='*' element={<div>없는 페이지 입니다.</div>} />
