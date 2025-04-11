@@ -11,15 +11,31 @@ function Detail(props) {
         return v.id == id;
     })
 
-    let[alert, setAlert]= useState(true);
+    //let[alert, setAlert]= useState(true);
 
+    // useEffect(() => {
+    //     setTimeout(() => {setAlert(false)}, 3000)
+    //         clearTimeout(timer);   
+    // })
+
+    //숫자의 상태를 저장하는 hook 숫자가 들어오면 아무것도 안하고, 문자가 들어오면 alert창 띄우기 
+    // Not a Number = isNaN => 숫자면 false
+    
+    let[num, setNum] = useState('');
     useEffect(() => {
-        setTimeout(() => {setAlert(false)}, 3000)
-    })
+        if(isNaN(num) == true) {
+            alert('숫자만 입럭하세요');
+        }
+    },[num])
+
+
+
+
 
     return (
         
         <div className="detail">
+            <input onChange={(e) => {setNum(e.target.value)}}/>
             {
                 alert ? <div>3초이내에 구매시 30%할인</div> : null
             }
