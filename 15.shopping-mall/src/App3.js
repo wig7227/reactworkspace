@@ -1,18 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Col, Row, Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { Col, Row, Navbar, Nav, Container } from 'react-bootstrap';
 import './App.css';
+//import top1 from './img/top1.png'
 import pList from './data/ProductList';
 import { useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Detail from './pages/Detail';
 import Cart from './pages/Cart';
-import  axios from 'axios';
-
 
 
 function App() {
   const [clothes, setClothes] = useState(pList);
-
+  /*
+  * useNavigate() : 페이지의 이동을 도와주는 함수
+  */
 
   let navigate = useNavigate();
 
@@ -26,6 +27,11 @@ function App() {
             <Nav.Link onClick={() => { navigate('/cart') }}>Cart</Nav.Link>
             <Nav.Link onClick={() => { navigate('/about') }}>about</Nav.Link>
             <Nav.Link onClick={() => { navigate('/detail') }}>Detail</Nav.Link>
+
+            {/* 
+            <Nav.Link onClick={() => { navigate(1) }}>Cart</Nav.Link>  1page앞으로
+            <Nav.Link onClick={() => { navigate(-1) }}>Cart</Nav.Link> 1page뒤로
+             */}
           </Nav>
         </Container>
       </Navbar>
@@ -45,27 +51,18 @@ function App() {
                 }
               </Row>
             </Container>
-
-            <Button variant="outline-primary" onClick={() => {
-              axios.get('https://raw.githubusercontent.com/wig7227/reactworkspace/refs/heads/main/15.shopping-mall/data2.json')
-                   .then((result) => {
-                    console.log(result);
-                    console.log(result.data);
-                    <Col>
-                      <img src = {`${process.env.PUBLIC_URL}/img/top${clothes.id}.png`} width="75%"/>
-                      <h4>{clothes.title}</h4>
-                      <p>{clothes.price}</p>
-                    </Col>
-                    
-                   })
-                   .catch(() => {
-                    console.log('데이터 가져오기 실패');
-                   })
-            }}>서버에서 데이터 가져오기</Button>
           </>
         }/>
 
        <Route path='/detail/:pindex' element={<Detail clothes={clothes}/>} />
+       {/*
+        <Route path='/detail/member/:pid' element={<Detail clothes={clothes}/>} />
+                         member는 문자
+
+        <Route path='/detail/:pid/:name' element={<Detail clothes={clothes}/>} />
+         데이터를 여러개 보낼 때 /detail/1/홍길동
+        */}
+
         <Route path='/cart' element={<Cart/>} />
         <Route path='/about' element={<div>about 페이지입니다</div>} />
         <Route path='*' element={<div>없는 페이지 입니다.</div>} />
