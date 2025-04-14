@@ -103,10 +103,10 @@ function App() {
         onDelete(1)
         }}>일기 삭제</button>
       <div>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/new"}>New</Link>
-        <Link to={"/detail"}>Detail</Link>
-        <Link to={"/edit"}>Edit</Link>
+        <Link to={"/"}>Home</Link> &emsp;
+        <Link to={"/new"}>New</Link> &emsp;
+        <Link to={"/detail"}>Detail</Link> &emsp;
+        <Link to={"/edit"}>Edit</Link> &emsp;
       </div>
       <DiaryStateContext.Provider value={data}>
         <DiaryDispathContext.Provider value={{onCreate, onUpdate, onDelete}}>

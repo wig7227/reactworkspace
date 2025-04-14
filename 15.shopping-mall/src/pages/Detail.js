@@ -75,7 +75,7 @@ function Detail(props) {
                 </Nav.Item>
             </Nav>
             <TabContent tab = {tab} />   
-            {/* <RecentViewed clothes={props.clothes} /> */}
+            <RecentViewed clothes={props.clothes} />
             
         </div>
     )
