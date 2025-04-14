@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=42dot+Sans:wght@300..800&display=swap');
+/* 다운로드 하여 public에 넣었을 때
+@font-face {
+  font-family: 글꼴;
+  src: url('/public/글꼴명.ttf')
+}
+*/
+body {
+  font-family: "42dot Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+html, body {
+  margin:0;
+  width: 100%;
+  background-color: azure;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

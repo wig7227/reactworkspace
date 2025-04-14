@@ -9,6 +9,32 @@ import Cart from './pages/Cart';
 import  axios from 'axios';
 
 function App() {
+
+  //[object Object]의 문자열로 들어감 쓸 수 없음
+  //let obj = {addr : '강남구'}
+  //let addr = JSOM.stringly(obj)
+
+  // JSON으로 모두 문자열로 변환하여 넣는다
+  let obj = {addr : '강남구'}
+  let addr = JSON.stringify(obj)
+  localStorage.setItem('addr', addr);
+
+  let user = {
+    name: 'kim',
+    age : 25,
+    hobbies : ['programing', 'gaming']
+  }
+  localStorage.setItem('user', JSON.stringify(user))
+
+  let getUser = localStorage.getItem('user');
+  console.log(getUser)
+  console.log(getUser.name)  // 사용못함
+
+  // 가져올 때 json -> object 형태로 전환
+  let storageUser = localStorage.getItem('user');
+  let u = JSON.parse(storageUser) //object로 변경
+  console.log(u.name)
+
   // 문. 최근에 본 상품 보여주기
   useEffect(() => {
     if(!localStorage.getItem('recentProduct')){
@@ -66,7 +92,7 @@ function App() {
           </>
         }/>
 
-       <Route path='/detail/:pid' element={<Detail clothes={clothes}/>} />
+       <Route path='/detail/:pindex' element={<Detail clothes={clothes}/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/about' element={<div>about 페이지입니다</div>} />
         <Route path='*' element={<div>없는 페이지 입니다.</div>} />
