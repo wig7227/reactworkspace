@@ -1,0 +1,30 @@
+.EmotionItem{
+    text-align: center;
+}
+.EmotionItem img {
+    width: 60px;
+}
+.EmotionItem_on_1{
+    color: white;
+    background-color: forestgreen;
+}
+.EmotionItem_on_2{
+    color: white;
+    background-color: rgb(216, 191, 80);
+}
+.EmotionItem_on_3{
+    color: white;
+    background-color: rgb(13, 158, 146);
+}
+.EmotionItem_on_4{
+    color: white;
+    background-color: rgb(255, 22, 22);
+}
+.EmotionItem_on_5{
+    color: white;
+    background-color: rgb(161, 36, 245);
+}
+.EmotionItem_on_6{
+    color: white;
+    background-color: rgb(0, 81, 255);
+}
