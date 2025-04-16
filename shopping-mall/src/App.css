@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.main-bg {
+  height: 500px;
+  background-image: url("./img/main.jpg");
+  /* public/img에 이미지를 넣었을 때
+  background-image: url("../public/img/main.jpg"); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 30px;
+}
+
+.detail_img {
+  width: 40%;
+}
+
+.detail_text{
+  width: 20%;
+  text-align: right;
+  margin: 50px;
+}
+
+/* 애니메이션 주기 */
+.start {
+  opacity: 0;
+}
+.end {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+
